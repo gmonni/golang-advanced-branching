@@ -19,23 +19,12 @@ func TestVehicleInterfaceIsDefined(t *testing.T) {
 func TestMainStructsAreDefined(t *testing.T) {
 
 	// Check for car struct
-	didFindAStruct, didFindTheStruct := checkStruct("car")
-	if !didFindAStruct || !didFindTheStruct {
-		t.Error("Did not define a struct named `car`")
-	}
-
-	// Check for truck struct
-	didFindAStruct, didFindTheStruct = checkStruct("truck")
-
-	if !didFindAStruct || !didFindTheStruct {
-		t.Error("Did not define a struct named `truck`")
-	}
-
-	// Check for bike struct
-	didFindAStruct, didFindTheStruct = checkStruct("bike")
-
-	if !didFindAStruct || !didFindTheStruct {
-		t.Error("Did not define a struct named `bike`")
+	structs :=[]string {"car","truck","bike"}
+	for _, val :=range structs {
+		didFindAStruct, didFindTheStruct := checkStruct(val)
+		if !didFindAStruct || !didFindTheStruct {
+			t.Errorf("Did not define a struct named `%s`",val)
+		}
 	}
 }
 
